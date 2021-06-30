@@ -1,0 +1,192 @@
+#cover .content{
+	width: 80%;
+	background-image: url("../img/cover.jpg");
+}
+
+#cover .content::before{
+	display: block;
+	padding-top: 160%;
+	content: "";
+}
+
+#loading{
+	position: absolute;
+	width: 50%;
+	bottom: 5%;
+	right: 25%;
+	text-align: center;
+	background-image: url("../img/loading.gif");
+	background-position: top center;
+}
+
+#loading::before{
+	display: block;
+	padding-top: 12.5%;
+	content: "";
+}
+
+#information .content{
+	width: 80%;
+	height: 90%;
+}
+
+#information #icon{
+	width: 20%;
+	display: inline-block;
+	background-image: url("../img/icon.png");
+	margin-right: 15px;
+}
+
+#information #icon::before{
+	display: block;
+	padding-top: 100%;
+	content: "";
+}
+
+#information .title *{
+	vertical-align: middle;
+}
+
+#information .infor-column{
+	display: inline-block;
+	width: 85%;
+	margin-bottom: 15px;
+}
+
+#information .infor-column *{
+	width: 100%;
+}
+
+#information .subject{
+	margin: 0%;
+	color: grey;
+}
+
+#information .infor{
+	margin: 0%;
+	color: black;
+	overflow-x: scroll;
+}
+
+#information input{
+	border: none;
+	border-bottom: solid black 2px;
+}
+
+#forgot-pwd, #problem-form{
+	display: block;
+	width: fit-content;
+	margin: auto;
+	text-align: center;
+	text-decoration: underline;
+}
+
+#tips{
+	text-align: center;
+}
+
+#tips{
+	text-align: center;
+}
+
+#game-infor-btn{
+	display: block;
+	width: 80%;
+	margin: auto;
+	background-color: white;
+	background-image: url("../img/game_infor.png");
+	background-position: bottom center;
+	border: solid 1px rgb(151, 99, 77);
+	border-radius: 10px;
+	font-size: large;
+	font-weight: bold;
+}
+
+#game-infor-btn *{
+	vertical-align: top;
+}
+
+#game-infor-btn::before{
+	width: 0%;
+	display: inline-block;
+	padding-top: 40%;
+	content: "";
+}
+
+#list .title{
+	height: 5%;
+}
+
+#list .columns{
+	width: 100%;
+	height: 80%;
+	padding: none;
+	overflow-y: scroll;
+}
+
+#list .list-column{
+	margin: none;
+	margin-top: 5px;
+	color: black;
+	background-size: auto 100%;
+	background-position: right center;
+}
+
+#end .content{
+	width: 80%;
+}
+
+#form{
+	width: 90%;
+	margin: 10px auto;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	box-shadow: 0px 0px 10px crimson;
+}
+
+.finish.complete{
+	border: none;
+	border-radius: 0%;
+	background-size: 100% auto;
+}
+
+.finish.complete *{
+	color: gray;
+}
+
+#q1 .finish.complete, .list-column:nth-child(2).complete{
+	background-image: url("../img/q1.png");
+}
+
+#q2 .finish.complete, .list-column:nth-child(3).complete{
+	background-image: url("../img/q2.png");
+}
+
+#q3 .finish.complete, .list-column:nth-child(4).complete{
+	background-image: url("../img/q3.png");
+}
+
+#q4 .finish.complete, .list-column:nth-child(5).complete{
+	background-image: url("../img/q4.png");
+}
+
+#q5 .finish.complete, .list-column:nth-child(6).complete{
+	background-image: url("../img/q5.png");
+}
+
+#q6 .finish.complete, .list-column:nth-child(7).complete{
+	background-image: url("../img/q6.png");
+}
+
+#q7 .finish.complete, .list-column:nth-child(8).complete{
+	background-image: url("../img/q7.png");
+}
+
+#q8 .finish.complete, .list-column:nth-child(9).complete{
+	background-image: url("../img/q8.png");
+}
+
+#form-link-column{
+	display: none;
+}

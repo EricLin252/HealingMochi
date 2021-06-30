@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小麻糬的療癒之旅</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+	<link rel="stylesheet" href="jqueryUI/jquery-ui.css">
+	<link rel="stylesheet" href="css/normal.css">
+	<link rel="stylesheet" href="css/pages.css">
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="jqueryUI/external/jquery/jquery.js"></script>
+	<script src="jqueryUI/jquery-ui.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+	<script src="js/variable.js"></script>
+	<script src="js/functions.js"></script>
+	<script src="js/database.js"></script>
+	<script src="js/dataflow.js"></script>
+	<script src="js/behaviour.js"></script>
+</head>
+<body>
+<div>
+	<div id="end">
+		<div class="content">
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLSffg44hGzlz_1mFr5dryTWkLknahmRsAgX4YH8ZIE0W99K5Sw/viewform" target="_blank" class="box-style-1" id="form">
+				恭喜你已經完成了所有手帳內容<br>
+				立刻點擊這裡填寫表單參加抽獎吧
+			</a>
+			<br>
+			非常感謝你的參與，同時也歡迎5/3～5/31至學生活動中心1F中庭參加實體互動式展覽喔！<br>
+			<br>
+			*手帳製作：(按姓名筆劃排列)<br>
+			工作人員：林冠宇 陳庭美 陳季瑤 彭思蓉 曾瑞祥 劉庭瑜 羅佩佳<br>
+			美編設計：人間失腦(hgj)
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q8">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好靜心</span>
+			</div>
+			<div class="diary-content">
+				<question message="我因為" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question>感覺到有些壓力，<question message="還有一些" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question>的感覺<br>
+				<br>
+				<question message="我做了" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question>來讓自己放鬆/靜下來<br>
+				<br>
+				<question message="我感覺" seq="3" :initdata="seq['seq3']" @update="update" :flag="flag"></question>
+				<span class="finish-column"><div class="finish" @click="finish(8)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q7">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好運動</span>
+			</div>
+			<div class="diary-content">
+				<question message="我做了" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question>讓身體變得健康的運動<br>
+				<br>
+				<question message="運動過後，我的身體/心理/心情有什麼變化？" br="true" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="如果可以的話，我想再嘗試" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question>
+				<span class="finish-column"><div class="finish" @click="finish(7)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q6">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好療癒</span>
+			</div>
+			<div class="diary-content">
+				<question message="我想感謝（可包括任何人事物）" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question>，<br>
+				<question message="因為" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="我想說" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question>
+				<span class="finish-column"><div class="finish" @click="finish(6)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q5">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好助人</span>
+			</div>
+			<div class="diary-content">
+				<question message="我幫忙" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question><question message="做了" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="我感覺" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="我還想要再嘗試" seq="3" :initdata="seq['seq3']" @update="update" :flag="flag"></question>
+				<span class="finish-column"><div class="finish" @click="finish(5)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q4">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好森活</span>
+			</div>
+			<div class="diary-content">
+				我看到什麼樣的景色？<br>
+				<br>
+				<button class="btn-style-1 upload-btn" v-if="!flag">請上傳一張照片</button>
+				<input type="file" accept="image/*" id="img4">
+				<img class="preview" src="#">
+				<br>
+				<br>
+				<question message="我感覺" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="此刻這個景色對我來說有什麼意義？" br="true" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="如果可以的話，我想要在這裡做什麼？" br="true" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question>
+				<span class="finish-column"><div class="finish" @click="finish(4)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q3">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好相處</span>
+			</div>
+			<div class="diary-content">
+				<question message="我與" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question><question message="一起" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question>，<br>
+				<question message="我感覺" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="如果可以的話，我想嘗試" seq="3" :initdata="seq['seq3']" @update="update" :flag="flag"></question>，讓我們關係可以維持或更靠近。
+				<span class="finish-column"><div class="finish" @click="finish(3)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q2">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好玩樂</span>
+			</div>
+			<div class="diary-content">
+				<question message="我上一次自在、盡情大笑的時候是" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question>，<br>
+				<question message="讓我有這種感覺是因為" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="我還能嘗試" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question>，讓生活多一些這種時刻
+				<span class="finish-column"><div class="finish" @click="finish(2)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="q1">
+		<div class="content box-style-1 diary">
+			<div class="diary-title">
+				<span class="time">Date: {{date}}</span><span class="goback">↩ 回目錄</span><span>好好吃</span>
+			</div>
+			<div class="diary-content">
+				<question message="今天我關掉所有手機、電腦的干擾，試著靜下心來，運用視覺、味覺、觸覺、嗅覺、聽覺來品嚐食物，其中...我品嚐到的味道是" seq="0" :initdata="seq['seq0']" @update="update" :flag="flag"></question><br>
+				<br>
+				<button class="btn-style-1 upload-btn" v-if="!flag">請上傳一張照片</button>
+				<input type="file" accept="image/*" id="img1">
+				<img class="preview" src="#">
+				<br>
+				<br>
+				<question message="身體感受到" seq="1" :initdata="seq['seq1']" @update="update" :flag="flag"></question><br>
+				<br>
+				<question message="我的心情是" seq="2" :initdata="seq['seq2']" @update="update" :flag="flag"></question>
+				<span class="finish-column"><div class="finish" @click="finish(1)"><div>完成</div></div></span>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="information">
+		<div class="content">
+			<h2 class="title"><div id="icon"></div>我的帳號</h2>
+			<div class="box-style-1">
+				<div v-if="state == 'mkaccount'">
+					<div class="infor-column">
+						<p class="subject">身分</p>
+						<select class="infor" id="type" v-model="type">
+							<option value="student" selected>陽明/交通學生</option>
+							<option value="teacher">陽明/交通教職員</option>
+							<option value="other">校外人士</option>
+						</select>
+					</div>
+				</div>
+				<div v-if="state != 'login'">
+					<div class="infor-column">
+						<p class="subject" v-if="type == 'student'">學號</p>
+						<p class="subject" v-else-if="type == 'teacher'">教職員代碼</p>
+						<p class="subject" v-else>自行設定帳號(英數字)</p>
+						<p class="infor" id="account" v-if="state == 'user'">{{account}}</p>
+						<input type="text" id="in-account" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" v-model="account" v-else>
+					</div>
+					<button class="write" v-if="state == 'user'" @click="input('account')"></button>
+				</div>
+				<div>
+					<div class="infor-column">
+						<p class="subject">電子郵件</p>
+						<p class="infor" id="email" v-if="state == 'user'">{{email}}</p>
+						<input type="text" id="in-email" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" v-model="email" v-else>
+					</div>
+					<button class="write" v-if="state == 'user'" @click="input('email')"></button>
+				</div>
+				<div v-if="state != 'user'">
+					<div class="infor-column">
+						<p class="subject">密碼</p>
+						<input :type="pwd_type" id="in-pwd" oninput="value=value.replace(/[\u4E00-\u9FA5]/g,'')" v-model="password">
+					</div>
+					<button class="eye" @focus="ch_type()" @blur="ch_type()"></button>
+				</div>
+			</div>
+			<div class="btn-box">
+				<button class="btn-style-1" id="ch-mkaccount" v-if="state == 'login'" @click="()=>{state = 'mkaccount'}">
+					創建帳號
+				</button><button class="btn-style-1" id="ch-login" v-if="state == 'mkaccount'" @click="()=>{state = 'login'}">
+					登入帳號
+				</button><button class="btn-style-1" id="set-pwd" v-if="state == 'user'" @click="input('password')">
+					更改密碼
+				</button><button class="btn-style-1" id="login" v-if="state == 'login'" @click="login()">
+					登入
+				</button><button class="btn-style-1" id="mkaccount" v-if="state == 'mkaccount'" @click="mkaccount()">
+					創建
+				</button><button class="btn-style-1" id="logout" v-if="state == 'user'" @click="logout()">
+					登出
+				</button>
+			</div>
+			<p id="forgot-pwd" v-if="state == 'login'" @click="input('forgot')">忘記密碼了？！</p>
+			<p id="tips" v-if="state != 'user'">* 可沿用以前活動的帳號喔 *</p>
+			<button id="game-infor-btn" @click="open_infor()"><span>關於手帳</span></button>
+			<a id="problem-form" href="https://forms.gle/mhCed3zzipvUHj7U8" target="_blank">遊戲發生問題嗎？請點我</a>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="list">
+		<div class="content diary">
+			<h2 class="title">目錄</h2>
+			<div class="columns">
+				<p class="list-column box-style-1" @click="gopage(3)">我的帳號 & 關於手帳</p>
+				<p class="list-column box-style-1" @click="gopage(4)">好好吃</p>
+				<p class="list-column box-style-1" @click="gopage(5)">好好玩樂</p>
+				<p class="list-column box-style-1" @click="gopage(6)">好好相處</p>
+				<p class="list-column box-style-1" @click="gopage(7)">好好森活</p>
+				<p class="list-column box-style-1" @click="gopage(8)">好好助人</p>
+				<p class="list-column box-style-1" @click="gopage(9)">好好療癒</p>
+				<p class="list-column box-style-1" @click="gopage(10)">好好運動</p>
+				<p class="list-column box-style-1" @click="gopage(11)">好好靜心</p>
+				<p class="list-column box-style-1" @click="gopage(12)" id="form-link-column">抽獎表單連結</p>
+			</div>
+		</div>
+		<a href="http://counsel.sa.nctu.edu.tw" class="website" target="new_window">陽明交大健康心理中心</a>
+	</div>
+	<div class="page" id="cover">
+		<div class="content"></div>
+		<div id="loading">loading</div>
+	</div>
+	<button id="prev"></button>
+	<button id="next"></button>
+	<div id="blocker"></div>
+	<div id="infor-scribe">
+		<div id="infor-title"></div>
+		<button class="cancel">╳</button>
+		<div id="infor-footer"></div>
+		<div id="infor-content"></div>
+	</div>
+	<div class="box-style-1" id="typing">
+		<div id="input-scribe"></div>
+		<textarea id="input-area"></textarea>
+	</div>
+	<div id="warning">
+		<button class="cancel">╳</button>
+		健康心理中心將於五月舉辦互動式展覽，<br>
+		於活動中心一樓展出手帳精彩內容，<br>
+		展覽僅展出手帳練習內文，不會包含任何可辨識出個人的資訊。<br>
+		請問你所輸入的本篇內容是否同意於五月互動式展覽中展出？
+		<p>
+			<span>
+				<input type="checkbox" id="accept"><label>同意展出</label>
+			</span><span style="text-align: right;">
+				<button class="btn-style-1" id="submit">確認送出</button>
+			</span>
+		</p>
+	</div>
+	<div class="box-style-1" id="change-infor">
+		<div id="change-infor-scribe"></div>
+		<input type="text" id="change-infor-input">
+	</div>
+</body>
+</html>

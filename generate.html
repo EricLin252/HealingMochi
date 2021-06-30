@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Generate</title>
+	<script src="jqueryUI/external/jquery/jquery.js"></script>
+	<script src="jqueryUI/jquery-ui.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-storage.js"></script>
+	<script src="js/generate.js"></script>
+	<link rel="stylesheet" href="css/generate.css">
+</head>
+<body>
+	<div id="login">
+		<span>Email：</span><input type="text" id="account"><br>
+		<span>密碼：</span><input type="password" id="pwd"><br>
+		<button onclick="login()">確認</button>
+	</div>
+	<select id="selectQ" onchange="changeState()">
+		<option value="1" selected>好好吃</option>
+		<option value="2">好好玩樂</option>
+		<option value="3">好好相處</option>
+		<option value="4">好好森活</option>
+		<option value="5">好好助人</option>
+		<option value="6">好好療癒</option>
+		<option value="7">好好運動</option>
+		<option value="8">好好靜心</option>
+	</select>
+	<div class="block" id="q1" style="display: block;"></div>
+	<div class="block" id="q2"></div>
+	<div class="block" id="q3"></div>
+	<div class="block" id="q4"></div>
+	<div class="block" id="q5"></div>
+	<div class="block" id="q6"></div>
+	<div class="block" id="q7"></div>
+	<div class="block" id="q8"></div>
+	<div id="foot"></div>
+</body>
+</html>
