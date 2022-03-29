@@ -55,7 +55,7 @@ function obj_len(obj){
 
 function readURL(input){
 	if(input.files && input.files[0]){
-		var regex = /^.+\.(jpe?g|gif|png)$/;
+		var regex = /^.+\.(jpe?g|png)$/;
 		if(!regex.test(input.files[0]["name"])){
 			window.alert("上傳格式錯誤，請上傳圖片檔案");
 			return;
